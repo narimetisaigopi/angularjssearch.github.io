@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Search Course</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+</head>
+<body ng-app="app" ng-controller="search">
+
+	<div class="center">
+		<input ng-model="search" type="course" name="course" placeholder="Enter course details" style="padding: 10px 10px 10px 0px; text-align:center;color:#000;font-size: 18px;">
+
+		<ol ng-repeat="course in courses | filter: search" text-align="left">
+			<li style="list-style-type: none;">{{$index+1}}. {{course.name}}<span style="font-weight: bold; color: silver"> ({{course.count}})</span></li>
+		</ol>
+	</div>
+	<div>
+
+	<style type="text/css">
+		.center {
+    		margin-left: auto;
+    		margin-right: auto;
+    		width: 60%;
+    		text-align: center;
+		}
+		body{
+			background-color: #fff;
+		}
+	</style>
+
+	<script type="text/javascript">
+		const app = angular.module('app',[]);
+		app.controller("search",search);
+		function search($scope){
+		$scope.courses = [
+			{name:"Machine Learning",count:3},
+			{name:"Data Science",count:5},
+			{name:"Android",count:30},
+			{name:"Python",count:85},
+			{name:"AngularJS",count:1},
+			{name:"Artificial Intelligence",count:7},
+			{name:"Robotics",count:9},
+			{name:"Web Development",count:18},
+		]}
+	</script>
+		
+	</div>
+</body>
+</html>
