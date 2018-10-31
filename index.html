@@ -5,21 +5,16 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
 </head>
 <body ng-app="app" ng-controller="search">
-
 	<div class="center">
 		<h2 style="color: black;font-weight: bold;">Search Course here</h2>
-	</br>
 		<input ng-model="search" type="course" name="course" placeholder="course name" style="padding: 10px 10px 10px 0px; text-align:center;color:#000;font-size: 18px;">
-
 		<ol>
 			<li ng-repeat="course in courses | filter: search" style="list-style-type: none; padding: 10px;" ng-click="filltextbox(course.name)">{{course.name}}
 				<span style="font-weight: bold; color: silver">({{course.count}})</span>
 			</li>
 		</ol>
-		<p>{{$index}}</p>
 	</div>
 	<div>
-
 	<style type="text/css">
 		.center {
     		margin-left: auto;
@@ -32,8 +27,9 @@
 		}
 		li:hover{
 			padding: 10px;
+			width: auto;
 			background-color: silver;
-			boarder:1px solid silver;
+			boarder:5px solid silver;
 		}
 	</style>
 
@@ -50,6 +46,13 @@
 				{name:"Artificial Intelligence",count:7},
 				{name:"Robotics",count:9},
 				{name:"Web Development",count:18},
+
+				{name:"IOS apps Development",count:5},
+				{name:"Orcale",count:5},
+				{name:"Cloud Computing",count:18},
+				{name:"Firebase",count:18},
+				{name:"Compter Networks",count:4},
+				{name:"Hybrid apps",count:0},
 			];
 
 			$scope.filltextbox = function(string){
@@ -57,12 +60,7 @@
 			}
 
 		};
-
-		
-
-
 	</script>
-		
 	</div>
 </body>
 </html>
