@@ -3,17 +3,20 @@
 <head>
 	<title>Search Course</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
-	<script type="text/javascript" src="script.js"></script>
-	<link rel="stylesheet" type="text/css" href="stylesheet.css">
 </head>
 <body ng-app="app" ng-controller="search">
 
 	<div class="center">
-		<input ng-model="search" type="course" name="course" placeholder="Enter course details" style="padding: 10px 10px 10px 0px; text-align:center;color:#000;font-size: 18px;">
+		<h2 style="color: black;font-weight: bold;">Search Course here</h2>
+	</br>
+		<input ng-model="search" type="course" name="course" placeholder="course name" style="padding: 10px 10px 10px 0px; text-align:center;color:#000;font-size: 18px;">
 
-		<ol ng-repeat="course in courses | filter: search" text-align="left">
-			<li style="list-style-type: none;">{{$index+1}}. {{course.name}}<span style="font-weight: bold; color: silver"> ({{course.count}})</span></li>
+		<ol>
+			<li ng-repeat="course in courses | filter: search" style="list-style-type: none; padding: 10px;" ng-click="filltextbox(course.name)">{{course.name}}
+				<span style="font-weight: bold; color: silver">({{course.count}})</span>
+			</li>
 		</ol>
+		<p>{{$index}}</p>
 	</div>
 	<div>
 
@@ -27,22 +30,37 @@
 		body{
 			background-color: #fff;
 		}
+		li:hover{
+			padding: 10px;
+			background-color: silver;
+			boarder:1px solid silver;
+		}
 	</style>
 
 	<script type="text/javascript">
 		const app = angular.module('app',[]);
 		app.controller("search",search);
 		function search($scope){
-		$scope.courses = [
-			{name:"Machine Learning",count:3},
-			{name:"Data Science",count:5},
-			{name:"Android",count:30},
-			{name:"Python",count:85},
-			{name:"AngularJS",count:1},
-			{name:"Artificial Intelligence",count:7},
-			{name:"Robotics",count:9},
-			{name:"Web Development",count:18},
-		]}
+			$scope.courses = [
+				{name:"Machine Learning",count:3},
+				{name:"Data Science",count:5},
+				{name:"Android",count:30},
+				{name:"Python",count:85},
+				{name:"AngularJS",count:1},
+				{name:"Artificial Intelligence",count:7},
+				{name:"Robotics",count:9},
+				{name:"Web Development",count:18},
+			];
+
+			$scope.filltextbox = function(string){
+				$scope.search = string;
+			}
+
+		};
+
+		
+
+
 	</script>
 		
 	</div>
